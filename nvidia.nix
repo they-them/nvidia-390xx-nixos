@@ -19,7 +19,10 @@ let
 in
 {
   nixpkgs.config.nvidia.acceptLicense = true;
+  nixpkgs.config.problems.handlers.nvidia-x11.broken = "warn";
+  nixpkgs.config.problems.handlers.nvidia-kernel-modules.broken = "warn";
   hardware.graphics.enable = true;
+  hardware.graphics.enable32Bit = true;
   boot.blacklistedKernelModules = [ "nouveau" "nvidiafb" ];  
 
   services.xserver.videoDrivers = [ "nvidia" ];               
